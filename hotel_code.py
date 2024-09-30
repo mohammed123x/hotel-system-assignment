@@ -38,22 +38,44 @@ class Guest:
         self.__reservation = reservation
 
     def make_reservation(self, room_type, start_date, end_date):
-        pass
+        '''
+        This method will initiate the request for making a reservation with the necessary details
+        that the guest have for the reservation
+        '''
+        print(f"Request of Reservation for {self.get_name()} with room type {room_type} Date : {start_date} till : {end_date}.")
 
     def check_in(self):
-        pass
+        '''
+        This method will check the guest into their reserved room.
+        '''
+        print(f"Checking in {self.__name}.")
 
     def request_room_service(self, room_service_type):
-        pass
+        '''
+        This method will be used when the guest desires to call the room service
+        '''
+        print(f"I {self.__name} would like a room service of type {room_service_type}.")
 
     def modify_personal_info(self, name=None, email=None, phone_number=None, address=None):
-        pass
+        '''
+        This method will allow the user to update his/her details
+
+        '''
+        print("Modifying guest's personal information.")
 
     def view_reservation_details(self):
-        pass
+        '''
+        This method will show the details of the guest's reservation.
+        '''
+
+        print(f"Reservation details for {self.__name}.")
 
     def cancel_reservation(self):
-        pass
+        '''
+        This method will be called to cancel the reservation for the guest
+
+        '''
+        print(f"Cancelling reservation for {self.__name}.")
 
 
 
@@ -66,7 +88,12 @@ class Reservation:
         self.__is_checked_in = False
 
     def mark_as_checked_in(self):
-        pass
+        '''
+        This method will mark the reservation as checked in
+        Returns:
+
+        '''
+        print(f"Marking {self.__guest.get_name()}'s reservation as checked in.")
 
     def get_guest(self):
         return self.__guest
@@ -101,7 +128,11 @@ class RoomService:
         self.__delivery_time = None
 
     def deliver_guest_order(self):
-        pass
+        '''
+        This method will return the ordered itmes to the guest
+
+        '''
+        print("THis method will deliver the room service order to the guest.")
 
     def get_service_type(self):
         return self.__service_type
@@ -135,7 +166,11 @@ class FoodDelivery(RoomService):
 
 
     def get_food_menu(self):
-        pass
+        '''
+        Shows all the items of food when the service offers
+
+        '''
+        return self.__food_items
 
 class LaundryService(RoomService):
     def __init__(self, room_number):
@@ -149,7 +184,11 @@ class LaundryService(RoomService):
 
 
     def get_laundry_menu(self):
-        pass
+        '''
+        Shows all the items offered by the laundary service
+
+        '''
+        return self.__laundry_items
 
 class Receptionist:
     def __init__(self, name, employee_id, contact_number):
@@ -168,29 +207,30 @@ class Receptionist:
         return self.__contact_number
 
     def make_reservation(self, guest, room_type, start_date, end_date):
-        pass
+        '''
+
+        THis method will take the details of the reservation and make a reservation for that guest
+        it will also show the details of the reservation which has been just created by the receptionist.
+
+        '''
+        reservation = Reservation(guest, room_type, start_date, end_date)
+        guest.set_reservation(reservation)
+        self.__reservations.append(reservation)
+
+        # showing all the details
+        print(f"Reservation confirmed for {guest.get_name()}:")
+        print(f"Room Type: {room_type}")
+        print(f"Start Date: {start_date}")
+        print(f"End Date: {end_date}")
 
     def check_in_guest(self, guest):
-        pass
+        print(f"Checked in guest: {guest.get_name()}.")
 
     def view_reservations(self):
-        pass
+        print("Viewing all reservations.")
 
     def update_reservation(self, guest, new_room_type=None, new_start_date=None, new_end_date=None):
-        pass
+        print(f"Updated the reservation")
 
     def delete_reservation(self, guest):
-        pass
-
-
-
-
-
-
-
-
-
-
-
-
-
+        print(f"Deleted reservation for {guest.get_name()}.")
