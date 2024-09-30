@@ -234,3 +234,39 @@ class Receptionist:
 
     def delete_reservation(self, guest):
         print(f"Deleted reservation for {guest.get_name()}.")
+
+
+# making the objects for the guests
+guest1 = Guest("Khalid", "khalid@gmail.com", "123-456-7890", "UAE")
+guest2 = Guest("Ali", "ali@gmail.com", "234-567-8901", "UAE")
+guest3 = Guest("Mohammed", "mohammed@gmail.com", "345-678-9012", "UAE")
+
+# making the object for receptionist
+receptionist = Receptionist("Umar", "EMP001", "987-654-3210")
+
+# Making reservation for guest 1
+room_type_1 = "Deluxe Room"
+start_date_1 = "2024-09-30"
+end_date_1 = "2024-10-02"
+
+reservation_1 = receptionist.make_reservation(guest1, room_type_1, start_date_1, end_date_1)
+
+
+# Making reservation for guest 2
+room_type_2 = "Standard Room"
+start_date_2 = "2024-10-03"
+end_date_2 = "2024-10-05"
+
+reservation_2 = receptionist.make_reservation(guest2, room_type_2, start_date_2, end_date_2)
+
+
+# Making reservation for guest 3
+room_type_3 = "Deluxe Room"
+start_date_3 = "2024-10-05"
+end_date_3 = "2024-10-07"
+
+reservation_3 = receptionist.make_reservation(guest3, room_type_3, start_date_3, end_date_3)
+
+
+
+
