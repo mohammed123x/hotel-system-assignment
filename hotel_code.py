@@ -1,3 +1,4 @@
+from datetime import datetime
 
 class Guest:
     def __init__(self, name, email, phone_number, address):
@@ -213,15 +214,44 @@ class Receptionist:
         it will also show the details of the reservation which has been just created by the receptionist.
 
         '''
+
+        hotel_name = "Comfort Inn & Suites Los Alamos"
+        hotel_address = "2455 Trinty Drive Los Alamos, NM, 87544"
+        hotel_phone = "Phone : 505-661-1110"
+        room_price = 30
+
+        print("*** Your Reservation is Confirmed ***\nThankyou for your reservation. plz print your hotel receipt and show at the check out.")
+        print("\nYour Name :",guest.get_name())
+        print("Your Email :",guest.get_email())
+        print("Your Contact NUmber :",guest.get_phone_number())
+        print("Your Address :",guest.get_address())
+
+        print("\n***",hotel_name,"***")
+        print(hotel_address)
+        print(hotel_phone)
+
         reservation = Reservation(guest, room_type, start_date, end_date)
         guest.set_reservation(reservation)
         self.__reservations.append(reservation)
 
         # showing all the details
-        print(f"Reservation confirmed for {guest.get_name()}:")
+        print(f"\nCheck-In Date: {start_date}")
+        print(f"Check-Out Date: {end_date}")
+        start_date = datetime.strptime(start_date, "%Y-%m-%d")
+        end_date = datetime.strptime(end_date, "%Y-%m-%d")
+        nights = (end_date - start_date).days
+        print("Number of Nights :",nights)
         print(f"Room Type: {room_type}")
-        print(f"Start Date: {start_date}")
-        print(f"End Date: {end_date}")
+
+        print("\n*** Summary of Charges ***")
+        print("Room Price :",room_price,"$")
+        print("Room Sub Total :",room_price*nights)
+        print("Tax :",5,"$")
+        print("Total Charges :",((room_price*nights)+5),"$")
+        print("Note: ALl prices are in US Dollars")
+
+
+        print("\n\n")
 
     def check_in_guest(self, guest):
         print(f"Checked in guest: {guest.get_name()}.")
@@ -247,7 +277,7 @@ receptionist = Receptionist("Umar", "EMP001", "987-654-3210")
 # Making reservation for guest 1
 room_type_1 = "Deluxe Room"
 start_date_1 = "2024-09-30"
-end_date_1 = "2024-10-02"
+end_date_1 = "2024-10-01"
 
 reservation_1 = receptionist.make_reservation(guest1, room_type_1, start_date_1, end_date_1)
 
@@ -263,9 +293,18 @@ reservation_2 = receptionist.make_reservation(guest2, room_type_2, start_date_2,
 # Making reservation for guest 3
 room_type_3 = "Deluxe Room"
 start_date_3 = "2024-10-05"
-end_date_3 = "2024-10-07"
+end_date_3 = "2024-10-08"
 
 reservation_3 = receptionist.make_reservation(guest3, room_type_3, start_date_3, end_date_3)
+
+
+
+
+
+
+
+
+
 
 
 
